@@ -1,0 +1,10 @@
+*.pt
+*.safetensors
+*.ckpt
+*.bin
+*.whl
+.idea/
+__pycache__/
+.venv/
+.vscode/
+*.pyc
