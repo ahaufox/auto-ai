@@ -1,0 +1,19 @@
+paddleocr
+transformers
+flask
+dashscope
+openai
+einops
+timm
+easyocr
+supervision==0.18.0
+opencv-python
+ruamel.yaml==0.18.10
+fastapi==0.116.1
+uvicorn==0.35.0
+#翻墙后下载 2.3G 不然很卡
+# 两个都用cu118 不统一会报错
+#pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+#ultralytics==8.3.70
+
+#python -m pip install paddlepaddle-gpu==2.6.2 -i https://www.paddlepaddle.org.cn/packages/stable/cu118/

@@ -1,0 +1,13 @@
+# 基础配置(Basic server configuration)
+envs:
+  # 服务器监听地址和端口(Server listening address and port)
+  master:
+    # 必须设置的环境变量 通过os.environ设置
+    KMP_DUPLICATE_LIB_OK: "TRUE"
+    HF_DATASETS_OFFLINE: "1"
+    HF_HUB_OFFLINE: "1"
+    PADDLE_OCR_BASE_DIR: './weights/'
+    HF_ENDPOINT: "https://hf-mirror.com"
+  app:
+    INPUT_IMG_DIR: './imgs/input/'
+    OUTPUT_IMG_DIR: './imgs/out/'
