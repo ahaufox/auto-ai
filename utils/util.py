@@ -1,4 +1,4 @@
-# from ultralytics import YOLO
+# 从ultralytics导入YOLO（已注释）
 import os
 import io
 import base64
@@ -6,7 +6,7 @@ import time
 from PIL import Image, ImageDraw, ImageFont
 import json
 import requests
-# utility function
+# 工具函数
 import os
 from openai import AzureOpenAI
 
@@ -15,12 +15,12 @@ import sys
 import os
 import cv2
 import numpy as np
-# %matplotlib inline
+# %matplotlib inline （Jupyter Notebook专用，已注释）
 from matplotlib import pyplot as plt
 from typing import List, Optional, Union, Tuple
 import time
 import base64
-from paddleocr import PaddleOCR
+
 
 import os
 import ast
@@ -33,15 +33,16 @@ import supervision as sv
 import torchvision.transforms as T
 from supervision.draw.color import Color, ColorPalette
 from supervision.detection.core import Detections
-paddle_ocr = PaddleOCR(
-            lang='ch',  # 语言设置为繁体中文，也可选择其他语言
-            use_angle_cls=False,  # 不使用角度分类器
-            use_gpu=False,  # 不使用GPU加速（与同一进程中的PyTorch会冲突）
-            show_log=False,  # 不显示日志信息
-            max_batch_size=32,  # 最大批处理大小
-            use_dilation=np.True_,  # 使用膨胀操作，提高识别准确率
-            det_db_score_mode='slow',  # 使用慢速评分模式，提高检测准确率
-            rec_batch_num=32)  # 识别批处理数量
+# from paddleocr import PaddleOCR
+# paddle_ocr = PaddleOCR(
+#             lang='ch',  # 语言设置为中文
+#             use_angle_cls=False,  # 不使用角度分类器
+#             use_gpu=False,  # 不使用GPU加速（与同一进程中的PyTorch会冲突）
+#             show_log=False,  # 不显示日志信息
+#             max_batch_size=32,  # 最大批处理大小
+#             use_dilation=np.True_,  # 使用膨胀操作，提高识别准确率
+#             det_db_score_mode='slow',  # 使用慢速评分模式，提高检测准确率
+#             rec_batch_num=32)  # 识别批处理数量
 
 def get_project_dir():
     """获取项目根目录"""
@@ -50,28 +51,28 @@ def get_project_dir():
 
 class BoxAnnotator:
     """
-    A class for drawing bounding boxes on an image using detections provided.
+    用于在图像上绘制边界框的类，使用提供的检测结果。
 
-    Attributes:
-        color (Union[Color, ColorPalette]): The color to draw the bounding box,
-            can be a single color or a color palette
-        thickness (int): The thickness of the bounding box lines, default is 2
-        text_color (Color): The color of the text on the bounding box, default is white
-        text_scale (float): The scale of the text on the bounding box, default is 0.5
-        text_thickness (int): The thickness of the text on the bounding box,
-            default is 1
-        text_padding (int): The padding around the text on the bounding box,
-            default is 5
+    属性:
+        color (Union[Color, ColorPalette]): 绘制边界框的颜色，
+            可以是单一颜色或调色板
+        thickness (int): 边界框线条的粗细，默认为2
+        text_color (Color): 边界框上文本的颜色，默认为白色
+        text_scale (float): 边界框上文本的缩放比例，默认为0.5
+        text_thickness (int): 边界框上文本的粗细，
+            默认为1
+        text_padding (int): 边界框上文本周围的填充，
+            默认为5
 
     """
 
     def __init__(
             self,
             color: Union[Color, ColorPalette] = ColorPalette.DEFAULT,
-            thickness: int = 3,  # 1 for seeclick 2 for mind2web and 3 for demo
+            thickness: int = 3,  # 1 用于 seeclick，2 用于 mind2web，3 用于演示
             text_color: Color = Color.BLACK,
-            text_scale: float = 0.5,  # 0.8 for mobile/web, 0.3 for desktop # 0.4 for mind2web
-            text_thickness: int = 2,  # 1, # 2 for demo
+            text_scale: float = 0.3,  # 移动端/网页端为0.8，桌面端为0.3，mind2web为0.4
+            text_thickness: int = 1,  # 1，演示用2
             text_padding: int = 10,
             avoid_overlap: bool = True,
     ):
@@ -92,37 +93,36 @@ class BoxAnnotator:
             image_size: Optional[Tuple[int, int]] = None,
     ) -> np.ndarray:
         """
-        Draws bounding boxes on the frame using the detections provided.
+        使用提供的检测结果在图像上绘制边界框。
 
-        Args:
-            scene (np.ndarray): The image on which the bounding boxes will be drawn
-            detections (Detections): The detections for which the
-                bounding boxes will be drawn
-            labels (Optional[List[str]]): An optional list of labels
-                corresponding to each detection. If `labels` are not provided,
-                corresponding `class_id` will be used as label.
-            skip_label (bool): Is set to `True`, skips bounding box label annotation.
-        Returns:
-            np.ndarray: The image with the bounding boxes drawn on it
+        参数:
+            scene (np.ndarray): 要绘制边界框的图像
+            detections (Detections): 要绘制边界框的检测结果
+            labels (Optional[List[str]]): 可选的标签列表，
+                对应每个检测结果。如果未提供`labels`，
+                将使用对应的`class_id`作为标签。
+            skip_label (bool): 如果设置为`True`，则跳过边界框标签注释。
+        返回:
+            np.ndarray: 绘制了边界框的图像
 
-        Example:
+        示例:
             ```python
             import supervision as sv
 
-            classes = ['person', ...]
-            image = ...
-            detections = sv.Detections(...)
+            classes = ['person', ...]  # 类别列表
+            image = ...  # 图像
+            detections = sv.Detections(...)  # 检测结果
 
-            box_annotator = sv.BoxAnnotator()
+            box_annotator = sv.BoxAnnotator()  # 创建边界框注释器
             labels = [
                 f"{classes[class_id]} {confidence:0.2f}"
                 for _, _, confidence, class_id, _ in detections
-            ]
+            ]  # 创建标签列表
             annotated_frame = box_annotator.annotate(
                 scene=image.copy(),
                 detections=detections,
                 labels=labels
-            )
+            )  # 绘制边界框和标签
             ```
         """
         font = cv2.FONT_HERSHEY_SIMPLEX
@@ -205,9 +205,11 @@ class BoxAnnotator:
 
 
 def get_optimal_label_pos(text_padding, text_width, text_height, x1, y1, x2, y2, detections, image_size):
-    """ check overlap of text and background detection box, and get_optimal_label_pos,
-        pos: str, position of the text, must be one of 'top left', 'top right', 'outer left', 'outer right' TODO: if all are overlapping, return the last one, i.e. outer right
-        Threshold: default to 0.3
+    """ 检查文本和背景检测框的重叠，并获取最佳标签位置，
+        pos: str, 文本的位置，必须是'top left'、'top right'、'outer left'、'outer right'之一
+        
+        TODO: 如果全部重叠，返回最后一个，即outer right
+        阈值: 默认为0.3
     """
 
     def get_is_overlap(detections, text_background_x1, text_background_y1, text_background_x2, text_background_y2,
@@ -285,6 +287,7 @@ def get_optimal_label_pos(text_padding, text_width, text_height, x1, y1, x2, y2,
     return text_x, text_y, text_background_x1, text_background_y1, text_background_x2, text_background_y2
 
 def intersection_area(box1, box2):
+    """计算两个边界框的交集面积"""
     x1 = max(box1[0], box2[0])
     y1 = max(box1[1], box2[1])
     x2 = min(box1[2], box2[2])
@@ -292,14 +295,25 @@ def intersection_area(box1, box2):
     return max(0, x2 - x1) * max(0, y2 - y1)
 
 def box_area(box):
+    """计算边界框的面积"""
     return (box[2] - box[0]) * (box[3] - box[1])
 
 def IoU(box1, box2, return_max=True):
+    """计算两个边界框的交并比(IoU)
+    
+    参数:
+        box1: 第一个边界框
+        box2: 第二个边界框
+        return_max: 是否返回最大值(IoU和两个覆盖率的最大值)
+    
+    返回:
+        交并比或最大覆盖率
+    """
     intersection = intersection_area(box1, box2)
     union = box_area(box1) + box_area(box2) - intersection
     if box_area(box1) > 0 and box_area(box2) > 0:
-        ratio1 = intersection / box_area(box1)
-        ratio2 = intersection / box_area(box2)
+        ratio1 = intersection / box_area(box1)  # box1被覆盖的比例
+        ratio2 = intersection / box_area(box2)  # box2被覆盖的比例
     else:
         ratio1, ratio2 = 0, 0
     if return_max:
@@ -308,7 +322,7 @@ def IoU(box1, box2, return_max=True):
         return intersection / union
 
 def predict(model, image, caption, box_threshold, text_threshold):
-    """ Use huggingface model to replace the original model
+    """ 使用huggingface模型替代原始模型进行预测
     """
     model, processor = model['model'], model['processor']
     device = model.device
@@ -331,8 +345,10 @@ def predict(model, image, caption, box_threshold, text_threshold):
 
 def remove_overlap_new(boxes, iou_threshold, ocr_bbox=None):
     '''
-    ocr_bbox format: [{'type': 'text', 'bbox':[x,y], 'interactivity':False, 'content':str }, ...]
-    boxes format: [{'type': 'icon', 'bbox':[x,y], 'interactivity':True, 'content':None }, ...]
+    移除重叠的边界框
+    
+    ocr_bbox格式: [{'type': 'text', 'bbox':[x,y], 'interactivity':False, 'content':str }, ...]
+    boxes格式: [{'type': 'icon', 'bbox':[x,y], 'interactivity':True, 'content':None }, ...]
 
     '''
     assert ocr_bbox is None or isinstance(ocr_bbox, List)
@@ -410,7 +426,7 @@ def remove_overlap_new(boxes, iou_threshold, ocr_bbox=None):
     return filtered_boxes # torch.tensor(filtered_boxes)
 
 def predict_yolo(model, image, box_threshold, imgsz, scale_img, iou_threshold=0.7):
-    """ Use huggingface model to replace the original model
+    """ 使用huggingface模型替代原始模型进行YOLO预测
     """
     # model = model['model']
     if scale_img:
@@ -433,6 +449,7 @@ def predict_yolo(model, image, box_threshold, imgsz, scale_img, iou_threshold=0.
 
     return boxes, conf, phrases
 def int_box_area(box, w, h):
+    """计算边界框的实际面积"""
     x1, y1, x2, y2 = box
     int_box = [int(x1*w), int(y1*h), int(x2*w), int(y2*h)]
     area = (int_box[2] - int_box[0]) * (int_box[3] - int_box[1])
@@ -441,8 +458,8 @@ def int_box_area(box, w, h):
 
 @torch.inference_mode()
 def get_parsed_content_icon(filtered_boxes, starting_idx, image_source, caption_model_processor, prompt=None,
-                            batch_size=128):
-    # Number of samples per batch, --> 128 roughly takes 4 GB of GPU memory for florence v2 model
+                            batch_size=32):
+    # 每批样本数量，对于florence v2模型，128个样本大约需要4GB GPU内存
     to_pil = ToPILImage()
     if starting_idx:
         non_ocr_boxes = filtered_boxes[starting_idx:]
@@ -492,6 +509,7 @@ def get_parsed_content_icon(filtered_boxes, starting_idx, image_source, caption_
 
 
 def get_parsed_content_icon_phi3v(filtered_boxes, ocr_bbox, image_source, caption_model_processor):
+    """使用phi3v模型解析图标内容"""
     to_pil = ToPILImage()
     if ocr_bbox:
         non_ocr_boxes = filtered_boxes[len(ocr_bbox):]
@@ -547,17 +565,17 @@ def get_parsed_content_icon_phi3v(filtered_boxes, ocr_bbox, image_source, captio
 def annotate(image_source: np.ndarray, boxes: torch.Tensor, logits: torch.Tensor, phrases: List[str], text_scale: float,
              text_padding=5, text_thickness=2, thickness=3) -> np.ndarray:
     """
-    This function annotates an image with bounding boxes and labels.
+    该函数在图像上标注边界框和标签。
 
-    Parameters:
-    image_source (np.ndarray): The source image to be annotated.
-    boxes (torch.Tensor): A tensor containing bounding box coordinates. in cxcywh format, pixel scale
-    logits (torch.Tensor): A tensor containing confidence scores for each bounding box.
-    phrases (List[str]): A list of labels for each bounding box.
-    text_scale (float): The scale of the text to be displayed. 0.8 for mobile/web, 0.3 for desktop # 0.4 for mind2web
+    参数:
+    image_source (np.ndarray): 要标注的源图像。
+    boxes (torch.Tensor): 包含边界框坐标的张量，采用cxcywh格式，像素尺度
+    logits (torch.Tensor): 包含每个边界框置信度分数的张量。
+    phrases (List[str]): 每个边界框的标签列表。
+    text_scale (float): 要显示的文本比例，移动端/网页端为0.8，桌面端为0.3，mind2web为0.4
 
-    Returns:
-    np.ndarray: The annotated image.
+    返回:
+    np.ndarray: 标注后的图像。
     """
     h, w, _ = image_source.shape
 
@@ -582,10 +600,10 @@ def get_som_labeled_img(image_source: Union[str, Image.Image], model=None, BOX_T
                         output_coord_in_ratio=False, ocr_bbox=None, text_scale=0.4, text_padding=5,
                         draw_bbox_config=None, caption_model_processor=None, ocr_text=[], use_local_semantics=True,
                         iou_threshold=0.9, prompt=None, scale_img=False, imgsz=None, batch_size=128):
-    """Process either an image path or Image object
+    """处理图像路径或Image对象
 
-    Args:
-        image_source: Either a file path (str) or PIL Image object
+    参数:
+        image_source: 图像路径(str)或PIL Image对象
         ...
     """
     if isinstance(image_source, str):
@@ -602,25 +620,24 @@ def get_som_labeled_img(image_source: Union[str, Image.Image], model=None, BOX_T
     phrases = [str(i) for i in range(len(phrases))]
 
     # annotate the image with labels
-    if ocr_bbox:
+    if ocr_bbox and ocr_text:
         ocr_bbox = torch.tensor(ocr_bbox) / torch.Tensor([w, h, w, h])
         ocr_bbox = ocr_bbox.tolist()
+        ocr_bbox_elem = \
+            [{'type': 'text', 'bbox': box, 'interactivity': False, 'content': txt, 'source': 'box_ocr_content_ocr'} for
+             box, txt in zip(ocr_bbox, ocr_text) if int_box_area(box, w, h) > 0]
     else:
         print('no ocr bbox!!!')
-        ocr_bbox = None
-
-    ocr_bbox_elem = \
-        [{'type': 'text', 'bbox': box, 'interactivity': False, 'content': txt, 'source': 'box_ocr_content_ocr'} for
-         box, txt in zip(ocr_bbox, ocr_text) if int_box_area(box, w, h) > 0]
+        ocr_bbox_elem = []
     xyxy_elem = [{'type': 'icon', 'bbox': box, 'interactivity': True, 'content': None} for box in xyxy.tolist() if
                  int_box_area(box, w, h) > 0]
-    filtered_boxes = remove_overlap_new(boxes=xyxy_elem, iou_threshold=iou_threshold, ocr_bbox=ocr_bbox_elem)
+    filtered_boxes_dict = remove_overlap_new(boxes=xyxy_elem, iou_threshold=iou_threshold, ocr_bbox=ocr_bbox_elem)
 
-    # sort the filtered_boxes so that the one with 'content': None is at the end, and get the index of the first 'content': None
-    filtered_boxes_elem = sorted(filtered_boxes, key=lambda x: x['content'] is None)
+    # sort the filtered_boxes_dict so that the one with 'content': None is at the end, and get the index of the first 'content': None
+    filtered_boxes_elem = sorted(filtered_boxes_dict, key=lambda x: x.get('content') is None)
     # get the index of the first 'content': None
-    starting_idx = next((i for i, box in enumerate(filtered_boxes_elem) if box['content'] is None), -1)
-    filtered_boxes = torch.tensor([box['bbox'] for box in filtered_boxes_elem])
+    starting_idx = next((i for i, box in enumerate(filtered_boxes_elem) if box.get('content') is None), -1)
+    filtered_boxes = torch.tensor([box.get('bbox', [0, 0, 0, 0]) for box in filtered_boxes_elem])
     print('len(filtered_boxes):', len(filtered_boxes), starting_idx)
 
     # get parsed icon local semantics
@@ -638,7 +655,7 @@ def get_som_labeled_img(image_source: Union[str, Image.Image], model=None, BOX_T
         parsed_content_icon_ls = []
         # fill the filtered_boxes_elem None content with parsed_content_icon in order
         for i, box in enumerate(filtered_boxes_elem):
-            if box['content'] is None:
+            if box.get('content') is None:
                 box['content'] = parsed_content_icon.pop(0)
         for i, txt in enumerate(parsed_content_icon):
             parsed_content_icon_ls.append(f"Icon Box ID {str(i + icon_start)}: {txt}")
@@ -672,25 +689,144 @@ def get_som_labeled_img(image_source: Union[str, Image.Image], model=None, BOX_T
 
 
 def get_xywh_yolo(input):
+    """从YOLO格式的输入中获取xywh坐标"""
     x, y, w, h = input[0], input[1], input[2] - input[0], input[3] - input[1]
     x, y, w, h = int(x), int(y), int(w), int(h)
     return x, y, w, h
 
 
 def get_xyxy(input):
+    """从输入中获取xyxy坐标"""
     x, y, xp, yp = input[0][0], input[0][1], input[2][0], input[2][1]
     x, y, xp, yp = int(x), int(y), int(xp), int(yp)
     return x, y, xp, yp
 
 
 def get_xywh(input):
+    """从输入中获取xywh坐标"""
     x, y, w, h = input[0][0], input[0][1], input[2][0] - input[0][0], input[2][1] - input[0][1]
     x, y, w, h = int(x), int(y), int(w), int(h)
     return x, y, w, h
 
 
+def api_based_ocr(image_source: Union[str, Image.Image], display_img=True, output_bb_format='xywh', goal_filtering=None,
+                  api_args=None):
+    """使用API服务进行OCR识别
+    
+    参数:
+        image_source: 图像路径(str)或PIL Image对象
+        display_img: 是否显示图像
+        output_bb_format: 输出边界框格式，可选'xywh'或'xyxy'
+        goal_filtering: 目标过滤
+        api_args: API调用参数，包含API密钥、URL等
+    """
+    # 处理图像源
+    if isinstance(image_source, str):
+        image_source = Image.open(image_source)
+    if image_source.mode == 'RGBA':
+        image_source = image_source.convert('RGB')
+    image_np = np.array(image_source)
+    w, h = image_source.size
+    
+    # 准备API调用参数
+    if api_args is None:
+        api_args = {}
+    
+    # 将图像转换为base64编码，以便通过API发送
+    buffered = io.BytesIO()
+    image_source.save(buffered, format="PNG")
+    image_base64 = base64.b64encode(buffered.getvalue()).decode('ascii')
+    
+    # 调用OCR API
+    api_url = api_args.get('url', 'http://127.0.0.1:802/ocr')
+    
+    payload = {
+        "file": image_base64,
+        "fileType": 1
+    }
+    
+    try:
+        response = requests.post(api_url, json=payload, timeout=30)
+        response.raise_for_status()  # 如果请求失败，抛出异常
+        
+        # 解析API响应
+        result = response.json()
+        # with open('api_response.json', 'w') as f:
+        #     json.dump(result, f)
+        #     print('api_response.json saved')
+        result_data = result["result"]["ocrResults"][0]["prunedResult"]
+        print(result_data)
+        # 提取文本和边界框
+        text = []
+        bb = []
+        # 检查是否有rec_texts和rec_boxes字段（基于实际API响应格式）
+        if "rec_texts" not in result_data or "rec_boxes" not in result_data:
+            print("Warning: API response missing 'rec_texts' or 'rec_boxes' field")
+            return ([], []), goal_filtering
+            
+        rec_texts = result_data["rec_texts"]
+        rec_boxes = result_data["rec_boxes"]
+        
+        if not rec_texts or not rec_boxes:
+            print("no ocr bbox!!!")
+            return ([], []), goal_filtering
+        
+        # 确保文本和边界框数量一致
+        min_len = min(len(rec_texts), len(rec_boxes))
+        for i in range(min_len):
+            text_content = rec_texts[i]
+            bbox = rec_boxes[i]
+            
+            if text_content and bbox and len(bbox) >= 4:
+                text.append(text_content)
+                
+                # 根据output_bb_format格式化边界框
+                if output_bb_format == 'xywh':
+                    # 假设bbox是[x1, y1, x2, y2]格式，转换为xywh
+                    x1, y1, x2, y2 = bbox[:4]
+                    width = x2 - x1
+                    height = y2 - y1
+                    bb.append([int(x1), int(y1), int(width), int(height)])
+                else:  # xyxy
+                    bb.append([int(x) for x in bbox[:4]])
+        
+    except requests.exceptions.RequestException as e:
+        print(f"OCR API request failed: {e}")
+        return ([], []), goal_filtering
+    except json.JSONDecodeError as e:
+        print(f"Failed to parse OCR API response: {e}")
+        return ([], []), goal_filtering
+    except Exception as e:
+        print(f"Unexpected error in OCR: {e}")
+        return ([], []), goal_filtering
+    
+    # 如果需要显示图像
+    if display_img and bb:
+        opencv_img = cv2.cvtColor(image_np, cv2.COLOR_RGB2BGR)
+        for box in bb:
+            if output_bb_format == 'xywh':
+                x, y, w, h = box
+                cv2.rectangle(opencv_img, (x, y), (x + w, y + h), (0, 255, 0), 2)
+            else:  # xyxy
+                x, y, x2, y2 = box
+                cv2.rectangle(opencv_img, (x, y), (x2, y2), (0, 255, 0), 2)
+        plt.imshow(cv2.cvtColor(opencv_img, cv2.COLOR_BGR2RGB))
+    
+    print(f'OCR found {len(text)} text boxes')
+    return (text, bb), goal_filtering
+
 def check_ocr_box(image_source: Union[str, Image.Image], display_img=True, output_bb_format='xywh', goal_filtering=None,
                   easyocr_args=None, use_paddleocr=False):
+    """检查OCR边界框
+    
+    参数:
+        image_source: 图像路径(str)或PIL Image对象
+        display_img: 是否显示图像
+        output_bb_format: 输出边界框格式，可选'xywh'或'xyxy'
+        goal_filtering: 目标过滤
+        easyocr_args: EasyOCR参数
+        use_paddleocr: 是否使用PaddleOCR
+    """
     if isinstance(image_source, str):
         image_source = Image.open(image_source)
     if image_source.mode == 'RGBA':
@@ -705,7 +841,6 @@ def check_ocr_box(image_source: Union[str, Image.Image], display_img=True, outpu
             text_threshold = 0.5
         else:
             text_threshold = easyocr_args['text_threshold']
-
 
         result = paddle_ocr.ocr(image_np, cls=False)[0]
         coord = [item[0] for item in result if item[1][1] > text_threshold]

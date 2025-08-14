@@ -7,6 +7,16 @@ os.environ['HF_HUB_OFFLINE']='1'
 os.environ['INPUT_IMG_DIR']='./imgs/input/'
 os.environ['OUTPUT_IMG_DIR']='./imgs/out/'
 def get_caption_model_processor(model_name, model_name_or_path="Salesforce/blip2-opt-2.7b", device=None):
+    """
+    获取模型 Salesforce/blip2-opt-2.7b 或 microsoft/Florence-2-base 给检测到的图标生成自然语言描述
+
+    
+    model_name: 模型名称
+    model_name_or_path: 模型路径
+    device: 设备
+    return: 模型和处理器
+    """
+    
     if not device:
         device = "cuda" if torch.cuda.is_available() else "cpu"
     if model_name == "blip2":

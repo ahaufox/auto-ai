@@ -1,0 +1,761 @@
+{
+    "parsed_content_list": [
+        {
+            "type": "text",
+            "bbox": [
+                0.06444906443357468,
+                0.0011750881094485521,
+                0.1029106006026268,
+                0.029377203434705734
+            ],
+            "interactivity": false,
+            "content": "\u641c\u7d22",
+            "source": "box_ocr_content_ocr"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.2796257734298706,
+                0.0011750881094485521,
+                0.5582120418548584,
+                0.029377203434705734
+            ],
+            "interactivity": false,
+            "content": "\u3010\u5185\u90e8\u3011\u4e1c\u98ce2025\u7528\u6237\u8fd0\u8425\u9879\u76ee\uff0811)",
+            "source": "box_ocr_content_ocr"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.32848232984542847,
+                0.047003526240587234,
+                0.3731808662414551,
+                0.06933020055294037
+            ],
+            "interactivity": false,
+            "content": "\u897f\u74dc\u76ae",
+            "source": "box_ocr_content_ocr"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.08731808513402939,
+                0.0599294938147068,
+                0.19646570086479187,
+                0.0881316065788269
+            ],
+            "interactivity": false,
+            "content": "\u3010\u5185\u3011\u957f\u9a6c\u7528...",
+            "source": "box_ocr_content_ocr"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.3388773500919342,
+                0.08695652335882187,
+                0.4688149690628052,
+                0.11045828461647034
+            ],
+            "interactivity": false,
+            "content": "8\u67088-10\u65e5\u6570\u636e.xls",
+            "source": "box_ocr_content_ocr"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.3388773500919342,
+                0.11515863984823227,
+                0.37733888626098633,
+                0.13278496265411377
+            ],
+            "interactivity": false,
+            "content": "20.0K",
+            "source": "box_ocr_content_ocr"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.07588357478380203,
+                0.14218565821647644,
+                0.20062370598316193,
+                0.1692126840353012
+            ],
+            "interactivity": false,
+            "content": "25\u5e74\u4e1c\u98ce-\u5353\u529b...",
+            "source": "box_ocr_content_ocr"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.8991683721542358,
+                0.20329025387763977,
+                0.9261954426765442,
+                0.2361927181482315
+            ],
+            "interactivity": false,
+            "content": "1",
+            "source": "box_ocr_content_ocr"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.5925155878067017,
+                0.26556992530822754,
+                0.6683991551399231,
+                0.2925969362258911
+            ],
+            "interactivity": false,
+            "content": "\u6628\u592909:13",
+            "source": "box_ocr_content_ocr"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.322245329618454,
+                0.31139835715293884,
+                0.3690228760242462,
+                0.3337250351905823
+            ],
+            "interactivity": false,
+            "content": "\u897f\u74dc\u76ae",
+            "source": "box_ocr_content_ocr"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.3367983400821686,
+                0.34665098786354065,
+                0.5083159804344177,
+                0.3701527714729309
+            ],
+            "interactivity": false,
+            "content": "131//8@\u5353\u529b\u6615-\u5218\u98de\u7bad",
+            "source": "box_ocr_content_ocr"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.0010395010467618704,
+                0.4124559462070465,
+                0.016632016748189926,
+                0.4253818988800049
+            ],
+            "interactivity": false,
+            "content": "?",
+            "source": "box_ocr_content_ocr"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.5935550928115845,
+                0.4089306592941284,
+                0.6673596501350403,
+                0.4324324429035187
+            ],
+            "interactivity": false,
+            "content": "\u6628\u592909:41",
+            "source": "box_ocr_content_ocr"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.6081081032752991,
+                0.5299647450447083,
+                0.6476091742515564,
+                0.5475910902023315
+            ],
+            "interactivity": false,
+            "content": "13:43",
+            "source": "box_ocr_content_ocr"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.0,
+                0.5734429955482483,
+                0.043659042567014694,
+                0.5957697033882141
+            ],
+            "interactivity": false,
+            "content": "J@LC",
+            "source": "box_ocr_content_ocr"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.31912681460380554,
+                0.5722679495811462,
+                0.3659043610095978,
+                0.5934194922447205
+            ],
+            "interactivity": false,
+            "content": "\u897f\u74dc\u76ae",
+            "source": "box_ocr_content_ocr"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.0010395010467618704,
+                0.7591069340705872,
+                0.020790020003914833,
+                0.7767332792282104
+            ],
+            "interactivity": false,
+            "content": "0",
+            "source": "box_ocr_content_ocr"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.06756756454706192,
+                0.9764982461929321,
+                0.12162162363529205,
+                1.0
+            ],
+            "interactivity": false,
+            "content": "\u516c\u4f17\u53f7",
+            "source": "box_ocr_content_ocr"
+        },
+        {
+            "type": "text",
+            "bbox": [
+                0.1985446959733963,
+                0.9811986088752747,
+                0.23180873692035675,
+                0.9988248944282532
+            ],
+            "interactivity": false,
+            "content": "14:17",
+            "source": "box_ocr_content_ocr"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.0672287717461586,
+                0.6321402788162231,
+                0.2872695028781891,
+                0.7125328779220581
+            ],
+            "interactivity": true,
+            "content": "\u3010\u5b98\u65b9\u3011\u901a.. Q \u661f\u671f\u5929 Intersteller\uff1a\u6027\u80fd\u6709... ",
+            "source": "box_yolo_content_ocr"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.06608197838068008,
+                0.5525974631309509,
+                0.28836479783058167,
+                0.6323648691177368
+            ],
+            "interactivity": true,
+            "content": "\u5609\u7acb\u521b \u661f\u671f\u4e00 \u8ba2\u5355\u53d1\u8d27\u901a\u77e5 2 ",
+            "source": "box_yolo_content_ocr"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.06969242542982101,
+                0.31238871812820435,
+                0.2865608334541321,
+                0.39287516474723816
+            ],
+            "interactivity": true,
+            "content": "\u8700\u5c71\u5145\u7535\u7fa4 10:28 \u00a9 [720\u6761]\u5d14\u4f1f\uff1a . 2 ",
+            "source": "box_yolo_content_ocr"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.06798697263002396,
+                0.4735843241214752,
+                0.28940242528915405,
+                0.5521668791770935
+            ],
+            "interactivity": true,
+            "content": "\u76d2\u5b50\u7ed3\u5408\u73a9\u5177... \u661f\u671f\u4e00 \u5218\u8d85\u5353\u529b\u6615\uff1a\u6b27\u514b\u6b27\u514b ",
+            "source": "box_yolo_content_ocr"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.06888728588819504,
+                0.3940151035785675,
+                0.2866767644882202,
+                0.4734008014202118
+            ],
+            "interactivity": true,
+            "content": "\u5947\u5947\u4e00\u5927\u5bb6 \u6628\u592910:13 \u8001\u7238\uff1a\u662f\u7684 ",
+            "source": "box_yolo_content_ocr"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.35436534881591797,
+                0.09524359554052353,
+                0.6193726062774658,
+                0.2013123780488968
+            ],
+            "interactivity": true,
+            "content": "\u00d7 \u5fae\u4fe1\u7535\u8111\u7248 ",
+            "source": "box_yolo_content_ocr"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.06907637417316437,
+                0.15167921781539917,
+                0.2885443866252899,
+                0.23203222453594208
+            ],
+            "interactivity": true,
+            "content": "13:57 [130\u6761]\u6587\u6848\u5218\u7490\uff1a[. ",
+            "source": "box_yolo_content_ocr"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.07020317018032074,
+                0.07122819125652313,
+                0.2841617465019226,
+                0.15330331027507782
+            ],
+            "interactivity": true,
+            "content": "14:10 [40\u6761]\u8bbe\u8ba1\u51af\u4e9a\u4e9a\uff1a1 A ",
+            "source": "box_yolo_content_ocr"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.06824222207069397,
+                0.23127952218055725,
+                0.2891235947608948,
+                0.3115338385105133
+            ],
+            "interactivity": true,
+            "content": "\u3010\u5185\u90e8\u3011\u4e1c\u98ce2.. 13:43 2 ",
+            "source": "box_yolo_content_ocr"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.06743969768285751,
+                0.7119895219802856,
+                0.2878776788711548,
+                0.791172206401825
+            ],
+            "interactivity": true,
+            "content": "\u542f\u667a\u5e7c\u513f\u56ed\u4e2d... \u661f\u671f\u56db \u79e6\u5b87\u6cfd\u5988\u5988\uff1a[\u94fe\u63a5]\u2026 A e ",
+            "source": "box_yolo_content_ocr"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.8813337683677673,
+                0.9323642253875732,
+                0.983972430229187,
+                0.9723497033119202
+            ],
+            "interactivity": true,
+            "content": "\u53d1\u9001\uff08S\uff09 ",
+            "source": "box_yolo_content_ocr"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.06766308099031448,
+                0.870974600315094,
+                0.28745216131210327,
+                0.9634813070297241
+            ],
+            "interactivity": true,
+            "content": "\u80a1\u5e02\u957f\u8679 14:19 [151\u6761]\u534f\u6210\uff1a\u8fd9\u8fd8\u80fd.. ",
+            "source": "box_yolo_content_ocr"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.06667947769165039,
+                0.7943316698074341,
+                0.28672218322753906,
+                0.8704784512519836
+            ],
+            "interactivity": true,
+            "content": "\u3010\u5185\u3011\u5409\u5229\u5a92... 06/12 \u201c\u5f20\u680b\u826f\u5353\u529b\u6615\u5df2\u6210. ",
+            "source": "box_yolo_content_ocr"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.0061952294781804085,
+                0.0016510658897459507,
+                0.0629943311214447,
+                0.07712012529373169
+            ],
+            "interactivity": true,
+            "content": "Q ",
+            "source": "box_yolo_content_ocr"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.3521028459072113,
+                0.5996160507202148,
+                0.554547905921936,
+                0.6415708661079407
+            ],
+            "interactivity": true,
+            "content": "229//17@\u5353\u529b\u6615-\u5218\u98de\u7bad ",
+            "source": "box_yolo_content_ocr"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.009756685234606266,
+                0.07931623607873917,
+                0.05888138338923454,
+                0.13070662319660187
+            ],
+            "interactivity": true,
+            "content": "Messaging",
+            "source": "box_yolo_content_yolo"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.00993774551898241,
+                0.1323602795600891,
+                0.05962352082133293,
+                0.18799780309200287
+            ],
+            "interactivity": true,
+            "content": "People",
+            "source": "box_yolo_content_yolo"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.011380231939256191,
+                0.8569108843803406,
+                0.059438057243824005,
+                0.9105868935585022
+            ],
+            "interactivity": true,
+            "content": "Maximize",
+            "source": "box_yolo_content_yolo"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.3773539066314697,
+                0.73869788646698,
+                0.4188913106918335,
+                0.7844167947769165
+            ],
+            "interactivity": true,
+            "content": "Save",
+            "source": "box_yolo_content_yolo"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.9501192569732666,
+                0.0250169076025486,
+                0.9920835494995117,
+                0.07205954939126968
+            ],
+            "interactivity": true,
+            "content": "More options",
+            "source": "box_yolo_content_yolo"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.009925121441483498,
+                0.1917126476764679,
+                0.058757234364748,
+                0.24536581337451935
+            ],
+            "interactivity": true,
+            "content": "3D modeling",
+            "source": "box_yolo_content_yolo"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.010043883696198463,
+                0.24726232886314392,
+                0.05854754149913788,
+                0.30131518840789795
+            ],
+            "interactivity": true,
+            "content": "System",
+            "source": "box_yolo_content_yolo"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.8843302130699158,
+                0.46376490592956543,
+                0.933897852897644,
+                0.5090650916099548
+            ],
+            "interactivity": true,
+            "content": "1",
+            "source": "box_yolo_content_yolo"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.8839743137359619,
+                0.6617382168769836,
+                0.9339582920074463,
+                0.7089774012565613
+            ],
+            "interactivity": true,
+            "content": "OneNote",
+            "source": "box_yolo_content_yolo"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.9122229814529419,
+                0.0,
+                0.9445340633392334,
+                0.027061285451054573
+            ],
+            "interactivity": true,
+            "content": "Maximize",
+            "source": "box_yolo_content_yolo"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.3372292220592499,
+                0.7384094595909119,
+                0.37718263268470764,
+                0.7872346043586731
+            ],
+            "interactivity": true,
+            "content": "3D modeling",
+            "source": "box_yolo_content_yolo"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.9365774393081665,
+                0.21717475354671478,
+                0.9835814237594604,
+                0.2663300037384033
+            ],
+            "interactivity": true,
+            "content": "Image",
+            "source": "box_yolo_content_yolo"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.8847607374191284,
+                0.21762630343437195,
+                0.9344051480293274,
+                0.2628587484359741
+            ],
+            "interactivity": true,
+            "content": "1",
+            "source": "box_yolo_content_yolo"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.9365434646606445,
+                0.4631817042827606,
+                0.9818155765533447,
+                0.5104073882102966
+            ],
+            "interactivity": true,
+            "content": "Image",
+            "source": "box_yolo_content_yolo"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.3017701804637909,
+                0.0707165002822876,
+                0.34910351037979126,
+                0.11664414405822754
+            ],
+            "interactivity": true,
+            "content": "Kindergarten",
+            "source": "box_yolo_content_yolo"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.8902026414871216,
+                0.02569384127855301,
+                0.951299786567688,
+                0.07150089740753174
+            ],
+            "interactivity": true,
+            "content": "Chat",
+            "source": "box_yolo_content_yolo"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.29444217681884766,
+                0.7347486019134521,
+                0.3355947732925415,
+                0.7910354137420654
+            ],
+            "interactivity": true,
+            "content": "Account",
+            "source": "box_yolo_content_yolo"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.936156153678894,
+                0.6611310839653015,
+                0.982883870601654,
+                0.7111259698867798
+            ],
+            "interactivity": true,
+            "content": "Image",
+            "source": "box_yolo_content_yolo"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.00967487134039402,
+                0.303135484457016,
+                0.059100911021232605,
+                0.3572521507740021
+            ],
+            "interactivity": true,
+            "content": "M0,0L9,0 4.5,5z",
+            "source": "box_yolo_content_yolo"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.007093722000718117,
+                0.3585328459739685,
+                0.06020384281873703,
+                0.4161607623100281
+            ],
+            "interactivity": true,
+            "content": "Close",
+            "source": "box_yolo_content_yolo"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.9546924829483032,
+                0.0,
+                0.9924015402793884,
+                0.02792995795607567
+            ],
+            "interactivity": true,
+            "content": "Close",
+            "source": "box_yolo_content_yolo"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.4210091829299927,
+                0.7394270896911621,
+                0.47540563344955444,
+                0.7831970453262329
+            ],
+            "interactivity": true,
+            "content": "Cut",
+            "source": "box_yolo_content_yolo"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.9450157880783081,
+                0.7357631921768188,
+                0.985007107257843,
+                0.7933851480484009
+            ],
+            "interactivity": true,
+            "content": "Wireless Button",
+            "source": "box_yolo_content_yolo"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.9049522876739502,
+                0.7351067066192627,
+                0.9425301551818848,
+                0.7928466796875
+            ],
+            "interactivity": true,
+            "content": "Target",
+            "source": "box_yolo_content_yolo"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.24388514459133148,
+                0.023575780913233757,
+                0.27433282136917114,
+                0.0582335889339447
+            ],
+            "interactivity": true,
+            "content": "Add",
+            "source": "box_yolo_content_yolo"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.012179180048406124,
+                0.41663968563079834,
+                0.058855995535850525,
+                0.47418031096458435
+            ],
+            "interactivity": true,
+            "content": "PowerPoint",
+            "source": "box_yolo_content_yolo"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.9913387894630432,
+                0.0,
+                1.0,
+                0.06589985638856888
+            ],
+            "interactivity": true,
+            "content": "M0,0L9,0 4.5,5z",
+            "source": "box_yolo_content_yolo"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                0.9902591109275818,
+                0.7331029176712036,
+                1.0,
+                0.7875334620475769
+            ],
+            "interactivity": true,
+            "content": "Open a new tab (\u2318N)",
+            "source": "box_yolo_content_yolo"
+        },
+        {
+            "type": "icon",
+            "bbox": [
+                5.347356272977777e-05,
+                0.003421682631596923,
+                0.00916173867881298,
+                0.07744064927101135
+            ],
+            "interactivity": true,
+            "content": "a bookmarking or bookmarking function.",
+            "source": "box_yolo_content_yolo"
+        }
+    ],
+    "latency": 3.3244094848632812
+}
