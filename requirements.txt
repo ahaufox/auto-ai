@@ -1,4 +1,6 @@
-paddleocr
+# coding: utf-8
+# paddleocr<=3.0.0
+requests
 transformers
 flask
 dashscope
@@ -8,12 +10,16 @@ timm
 easyocr
 supervision==0.18.0
 opencv-python
+opencv-python-headless>=4.5.5.64
 ruamel.yaml==0.18.10
 fastapi==0.116.1
 uvicorn==0.35.0
+NumPy>=1.21.2,<2.0.0
+protobuf<3.20,>=3.9.2
+ultralytics==8.3.70
 #翻墙后下载 2.3G 不然很卡
 # 两个都用cu118 不统一会报错
-#pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-#ultralytics==8.3.70
+# pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+
 
 #python -m pip install paddlepaddle-gpu==2.6.2 -i https://www.paddlepaddle.org.cn/packages/stable/cu118/

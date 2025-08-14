@@ -1,7 +1,7 @@
 import requests
 import base64
 import os
-
+import json
 base_url = 'http://127.0.0.1:8007/'
 
 
@@ -19,7 +19,7 @@ def test_parse():
     print("\nTesting parse endpoint...")
     
     # 读取图像文件并转换为base64
-    image_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "imgs", "input", "saved_image.png")
+    image_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "imgs", "input", "capture.png")
     try:
         with open(image_path, "rb") as image_file:
             image_data = image_file.read()
@@ -36,12 +36,10 @@ def test_parse():
     try:
         r = requests.post(f"{base_url}parse/", json=payload)
         print(f"Response status: {r.status_code}")
-        print(f"Response content: {r.text[:500]}...")  # 只打印部分响应，避免输出过长
         
         # 如果响应成功，可以进一步处理返回的结果
         if r.status_code == 200:
             result = r.json()
-            print(result.get('parsed_content_list'))
             print(f"Cost: {result.get('latency')} seconds")
             # 可以将返回的图像保存到文件
             if 'som_image_base64' in result:
@@ -49,6 +47,12 @@ def test_parse():
                 with open(output_image_path, "wb") as f:
                     f.write(base64.b64decode(result['som_image_base64']))
                 print(f"Result image saved to: {output_image_path}")
+            # 解析结果保存为json
+            result.pop('som_image_base64') # 删除som_image_base64
+            with open('test_result.json', 'w') as f:
+                json.dump(result, f)
+            for i, v in enumerate(result.get('parsed_content_list')):
+                print(i,f'{v["type"]}: {v["content"]} {v["bbox"]}')
         return r.status_code == 200
     except Exception as e:
         print(f"Error sending request: {e}")
