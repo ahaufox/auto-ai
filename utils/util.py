@@ -596,7 +596,7 @@ def annotate(image_source: np.ndarray, boxes: torch.Tensor, logits: torch.Tensor
 
 
 
-def get_som_labeled_img(image_source: Union[str, Image.Image], model=None, BOX_TRESHOLD=0.01,
+def get_som_labeled_img(image_source: Union[str, Image.Image], model=None, BOX_THRESHOLD=0.01,
                         output_coord_in_ratio=False, ocr_bbox=None, text_scale=0.4, text_padding=5,
                         draw_bbox_config=None, caption_model_processor=None, ocr_text=[], use_local_semantics=True,
                         iou_threshold=0.9, prompt=None, scale_img=False, imgsz=None, batch_size=128):
@@ -613,7 +613,7 @@ def get_som_labeled_img(image_source: Union[str, Image.Image], model=None, BOX_T
     if not imgsz:
         imgsz = (h, w)
     # print('image size:', w, h)
-    xyxy, logits, phrases = predict_yolo(model=model, image=image_source, box_threshold=BOX_TRESHOLD, imgsz=imgsz,
+    xyxy, logits, phrases = predict_yolo(model=model, image=image_source, box_threshold=BOX_THRESHOLD, imgsz=imgsz,
                                          scale_img=scale_img, iou_threshold=0.1)
     xyxy = xyxy / torch.Tensor([w, h, w, h]).to(xyxy.device)
     image_source = np.asarray(image_source)
