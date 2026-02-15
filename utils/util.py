@@ -606,7 +606,7 @@ def get_som_labeled_img(image_source: Union[str, Image.Image], model=None, BOX_T
         image_source: 图像路径(str)或PIL Image对象
         ...
     """
-    if isinstance(image_source, str):
+    if not isinstance(image_source, Image.Image):
         image_source = Image.open(image_source)
     image_source = image_source.convert("RGB")  # for CLIP
     w, h = image_source.size
@@ -721,7 +721,7 @@ def api_based_ocr(image_source: Union[str, Image.Image], display_img=True, outpu
         api_args: API调用参数，包含API密钥、URL等
     """
     # 处理图像源
-    if isinstance(image_source, str):
+    if not isinstance(image_source, Image.Image):
         image_source = Image.open(image_source)
     if image_source.mode == 'RGBA':
         image_source = image_source.convert('RGB')
@@ -827,7 +827,7 @@ def check_ocr_box(image_source: Union[str, Image.Image], display_img=True, outpu
         easyocr_args: EasyOCR参数
         use_paddleocr: 是否使用PaddleOCR
     """
-    if isinstance(image_source, str):
+    if not isinstance(image_source, Image.Image):
         image_source = Image.open(image_source)
     if image_source.mode == 'RGBA':
         # Convert RGBA to RGB to avoid alpha channel issues

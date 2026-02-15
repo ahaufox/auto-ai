@@ -1,85 +1,30 @@
 # OmniParser
 
-OmniParser is a comprehensive screen parsing tool designed to detect and caption UI elements (icons and text) from screenshots. It leverages:
-- **YOLO** for icon detection.
-- **Florence-2** (or BLIP-2) for icon captioning/description.
-- **EasyOCR** (or PaddleOCR) for text recognition.
+OmniParser 是一个用于屏幕解析的综合工具，能够检测并描述 UI 元素（图标和文本）。它结合了以下技术：
+- **YOLO**: 用于图标检测
+- **Florence-2** (或 BLIP-2): 用于图标描述
+- **EasyOCR** (或 PaddleOCR): 用于文字识别
 
-## Prerequisites
+## 文档导航
 
-- Python 3.8 or higher.
-- CUDA-compatible GPU is highly recommended for performance (especially for Florence-2 and YOLO).
+请参考 `docs/` 目录下的详细文档：
 
-## Installation
+- [🛠️ 开发指南 (Development Guide)](docs/develop.md)
+  - 环境搭建、依赖安装、权重下载说明。
 
-1.  **Clone the repository:**
-    ```bash
-    git clone <repository_url>
-    cd <repository_name>
-    ```
+- [🚀 运行指南 (Run Guide)](docs/run.md)
+  - 如何运行演示脚本 (`demo.py`) 和 API 服务器 (`server/gui_server.py`)。
 
-2.  **Install dependencies:**
-    ```bash
-    pip install -r requirements.txt
-    ```
+## 快速开始
 
-3.  **Install PyTorch:**
-    You must install a version of PyTorch compatible with your CUDA version. For example, for CUDA 11.8:
-    ```bash
-    pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-    ```
+1. **安装依赖**:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-4.  **Download Weights:**
-    Ensure you have the model weights placed in the `weights/` directory as expected by the configuration:
-    - `weights/icon_detect/model.pt` (YOLO model)
-    - `weights/icon_caption_florence/` (Florence-2 model)
+2. **运行演示**:
+   ```bash
+   python demo.py
+   ```
 
-## Usage
-
-### Running the Demo
-
-To run a quick demonstration on an image:
-
-```bash
-python demo.py
-```
-This will process the default image (or fallback to `screenshot.png` if available) and save the result to `imgs/out/out_image.png`.
-
-### Running the Server
-
-To start the API server:
-
-```bash
-python server/gui_server.py
-```
-
-The server will start on `http://0.0.0.0:8007`.
-
-### API Endpoints
-
-#### POST `/parse/`
-
-Parses a base64-encoded image.
-
-**Request Body:**
-```json
-{
-  "base64_image": "<base64_encoded_string>"
-}
-```
-
-**Response:**
-```json
-{
-  "som_image_base64": "<annotated_image_base64>",
-  "parsed_content_list": ["list", "of", "descriptions"],
-  "latency": 1.23
-}
-```
-
-## Configuration
-
-Configuration is managed via `config/default.yaml` and environment variables. Key settings include:
-- `INPUT_IMG_DIR`: Directory for input images.
-- `OUTPUT_IMG_DIR`: Directory for output results.
-- `BOX_THRESHOLD`: Confidence threshold for icon detection (default: 0.05).
+更多详细信息，请查阅上述文档链接。

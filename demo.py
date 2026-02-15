@@ -5,7 +5,7 @@ from pathlib import Path
 from PIL import Image
 
 from config.settings import load_config
-from model_load import get_yolo_model, get_caption_model_processor
+from utils.model_load import get_yolo_model, get_caption_model_processor
 from utils.util import check_ocr_box, get_som_labeled_img
 
 # Use Path for robust path handling

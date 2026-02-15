@@ -1,5 +1,5 @@
 from utils.util import get_som_labeled_img, api_based_ocr,check_ocr_box
-from model_load import get_caption_model_processor, get_yolo_model
+from utils.model_load import get_caption_model_processor, get_yolo_model
 import torch
 from PIL import Image
 import io
