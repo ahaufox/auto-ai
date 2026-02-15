@@ -1,5 +1,5 @@
 from utils.util import get_som_labeled_img, api_based_ocr,check_ocr_box
-from model_load import get_caption_model_processor, get_yolo_model
+from utils.model_load import get_caption_model_processor, get_yolo_model
 import torch
 from PIL import Image
 import io
@@ -33,9 +33,9 @@ class Omniparser(object):
         # (text, ocr_bbox), _ = check_ocr_box(image, display_img=False, output_bb_format='xyxy', easyocr_args={'text_threshold': 0.8}, use_paddleocr=False)
         (text, ocr_bbox), _ = api_based_ocr(image, display_img=False, output_bb_format='xyxy', api_args={'text_threshold': 0.8})
 
-        dino_labled_img, label_coordinates, parsed_content_list = get_som_labeled_img(image, self.som_model, BOX_TRESHOLD=self.config['BOX_TRESHOLD'],
+        dino_labeled_img, label_coordinates, parsed_content_list = get_som_labeled_img(image, self.som_model, BOX_THRESHOLD=self.config['BOX_THRESHOLD'],
                                                                                       output_coord_in_ratio=True, ocr_bbox=ocr_bbox,
                                                                                       draw_bbox_config=draw_bbox_config, caption_model_processor=self.caption_model_processor,
                                                                                       ocr_text=text, use_local_semantics=True, iou_threshold=0.7, scale_img=False, batch_size=8)
 
-        return dino_labled_img, parsed_content_list
+        return dino_labeled_img, parsed_content_list
